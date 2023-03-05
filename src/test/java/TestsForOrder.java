@@ -1,6 +1,7 @@
 
 import PageObjects.OrderPage;
 import org.junit.Assert;
+import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -40,12 +41,15 @@ public class TestsForOrder {
         };
     }
     private WebDriver driver;
-
+    @Before
+    public void setUp() {
+        // драйвер для браузера Chrome
+        // System.setProperty("webdriver.chrome.driver", "/WebDriver/bin/chromedriver.exe");
+        driver = new ChromeDriver();
+        // driver = new FirefoxDriver();
+    }
     @Test
     public void testForUpButton() {
-        System.setProperty("webdriver.chrome.driver", "/WebDriver/bin/chromedriver.exe");
-        driver = new ChromeDriver();
-        //driver = new FirefoxDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
         OrderPage objOrder = new OrderPage(driver);
@@ -63,8 +67,6 @@ public class TestsForOrder {
             Assert.assertTrue("Номер заказа не найден:", actual);
         }
     public void testForDownButton() {
-        System.setProperty("webdriver.chrome.driver", "/WebDriver/bin/chromedriver.exe");
-        driver = new ChromeDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
         OrderPage objOrder = new OrderPage(driver);

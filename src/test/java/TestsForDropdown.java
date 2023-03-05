@@ -1,5 +1,6 @@
 
 import PageObjects.MainPage;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.*;
@@ -36,13 +37,15 @@ public class TestsForDropdown {
                 { 8, "Да, обязательно. Всем самокатов! И Москве, и Московской области."},
         };
     }
+    @Before
+    public void setUp() {
+        // драйвер для браузера Chrome
+        // System.setProperty("webdriver.chrome.driver", "/WebDriver/bin/chromedriver.exe");
+        driver = new ChromeDriver();
+    }
     @Test
     public void testForTextInAnswers() {
-            // драйвер для браузера Chrome
-            System.setProperty("webdriver.chrome.driver", "/WebDriver/bin/chromedriver.exe");
-            driver = new ChromeDriver();
             driver.get("https://qa-scooter.praktikum-services.ru/");
-
             MainPage objMainPage = new MainPage(driver);
 
             objMainPage.scrollToQuestion(questionNumber);
